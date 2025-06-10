@@ -1,0 +1,222 @@
+.main-header {
+  background-color: rgba(233, 232, 248, 0.9);
+  color: #424874;
+  padding: 4px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  font-weight: 600;
+  font-size: 2.2rem !important;
+  color: #424874;
+  font-family: "Playfair Display", serif;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.bar {
+  width: 100%;
+  height: 3px;
+  background: #424874;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.menu-toggle:hover .bar {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 320px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--white) 0%, var(--lightest-color) 100%);
+  z-index: 200;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -5px 0 25px rgba(66, 72, 116, 0.15);
+  color: var(--text-primary);
+  backdrop-filter: blur(20px);
+}
+
+.menu.active {
+  right: 0;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 20px;
+  background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+  color: white;
+  position: relative;
+}
+
+.menu-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+}
+
+.menu-header h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.menu-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.menu-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+.menu ul {
+  list-style: none;
+  padding: 10px 0;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 25px;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  margin: 0 15px;
+  border-radius: 8px;
+}
+
+.menu-link::before {
+  content: "";
+  position: absolute;
+  left: -100%;
+  bottom: 8px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.menu-link:hover::before,
+.menu-link.active::before {
+  left: 0;
+}
+
+.menu-link:hover,
+.menu-link.active {
+  padding-left: 35px;
+  font-weight: 600;
+  transform: translateX(5px);
+  color: #4ecdc4;
+}
+
+.menu-link .material-icons {
+  font-size: 22px;
+  transition: all 0.3s ease;
+}
+
+.menu-link:hover .material-icons,
+.menu-link.active .material-icons {
+  transform: scale(1.1);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  color: #4ecdc4;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(66, 72, 116, 0.6);
+  z-index: 150;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (min-width: 768px) {
+  .header-title {
+    font-size: 1.7rem;
+  }
+
+  .logo-img {
+    height: 45px;
+    width: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu {
+    width: 100%;
+    right: -100%;
+  }
+}

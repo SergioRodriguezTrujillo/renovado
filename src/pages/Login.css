@@ -1,0 +1,228 @@
+.login-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(124, 131, 253, 0.3) 0%, transparent 50%);
+}
+
+.login-container {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 50px 40px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(66, 72, 116, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.login-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-primary);
+  opacity: 0.05;
+  border-radius: 20px;
+  z-index: -1;
+}
+
+.login-avatar {
+  width: 90px;
+  height: 90px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  box-shadow: 0 15px 35px rgba(124, 131, 253, 0.4);
+  position: relative;
+}
+
+.login-avatar::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: var(--gradient-secondary);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.login-avatar:hover::before {
+  opacity: 1;
+}
+
+.login-avatar .material-icons {
+  color: white;
+  font-size: 45px;
+}
+
+.login-title {
+  color: var(--text-primary);
+  margin-bottom: 35px;
+  font-weight: 600;
+  font-size: 1.4rem;
+  font-family: var(--title-font);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  position: relative;
+  text-align: left;
+}
+
+.password-group {
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  padding: 18px 0;
+  border: none;
+  border-bottom: 2px solid var(--light-color);
+  background: transparent;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.form-input:focus {
+  border-bottom-color: var(--accent-color);
+  box-shadow: 0 2px 10px rgba(124, 131, 253, 0.2);
+}
+
+.form-input::placeholder {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.password-toggle:hover {
+  color: var(--accent-color);
+  background: rgba(124, 131, 253, 0.1);
+}
+
+.error-message {
+  color: var(--warning-color);
+  font-size: 14px;
+  text-align: left;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.login-button {
+  background: var(--gradient-green);
+  color: white;
+  padding: 18px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(124, 131, 253, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  transition: left 0.3s ease;
+}
+
+.login-button:hover::before {
+  left: 0;
+}
+
+.login-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(124, 131, 253, 0.5);
+}
+
+.login-button span {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .login-card {
+    padding: 40px 30px;
+    margin: 20px;
+  }
+
+  .login-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .login-avatar .material-icons {
+    font-size: 40px;
+  }
+
+  .login-title {
+    font-size: 1.2rem;
+  }
+}

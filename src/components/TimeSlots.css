@@ -1,0 +1,78 @@
+.time-slots-container {
+  text-align: center;
+}
+
+.selected-date {
+  margin-bottom: 30px;
+}
+
+.selected-date h3 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.selected-date p {
+  color: var(--text-secondary);
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.time-slot {
+  padding: 12px 20px;
+  border: 2px solid var(--light-color);
+  border-radius: 8px;
+  background: white;
+  color: var(--text-primary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.time-slot:hover {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.time-slot.selected {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: white;
+}
+
+.no-slots {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+.no-slots .material-icons {
+  font-size: 48px;
+  color: var(--light-color);
+  margin-bottom: 20px;
+}
+
+.no-slots p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .time-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .time-slot {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+}

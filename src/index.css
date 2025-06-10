@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+
+:root {
+  --primary-color: #424874;
+  --secondary-color: #a6b1e1;
+  --light-color: #dcd6f7;
+  --lightest-color: #f4eeff;
+  --accent-color: #7c83fd;
+  --success-color: #6c63ff;
+  --warning-color: #ff6b9d;
+  --info-color: #4ecdc4;
+  --text-primary: #424874;
+  --text-secondary: #666666;
+  --text-light: #999999;
+  --background: #f4eeff;
+  --white: #ffffff;
+  --border-radius: 8px;
+  --shadow: 0 2px 8px rgba(66, 72, 116, 0.1);
+  --shadow-hover: 0 4px 16px rgba(66, 72, 116, 0.15);
+  --gradient-primary: linear-gradient(135deg, #7c83fd 0%, #a6b1e1 100%);
+  --gradient-secondary: linear-gradient(135deg, #ff6b9d 0%, #ffa726 100%);
+  --gradient-accent: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+input {
+  font-family: inherit;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

@@ -1,0 +1,413 @@
+.admin-turnos-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.admin-turnos-content {
+  flex: 1;
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.admin-header {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.admin-header h1 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 2rem;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.admin-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  background: #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.admin-tab:hover {
+  background: #e0e0e0;
+}
+
+.admin-tab.active {
+  background: #667eea;
+  color: white;
+}
+
+.admin-content {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.turnos-list-container {
+  display: flex;
+  height: 600px;
+}
+
+.turnos-list {
+  flex: 1;
+  border-right: 1px solid #eee;
+}
+
+.turnos-list-header {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr 1fr 100px;
+  gap: 10px;
+  padding: 15px;
+  background: #f8f9fa;
+  font-weight: bold;
+  border-bottom: 2px solid #eee;
+}
+
+.turno-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr 1fr 100px;
+  gap: 10px;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.turno-item:hover {
+  background: #f8f9fa;
+}
+
+.turno-item.selected {
+  background: #e3f2fd;
+  border-left: 4px solid #667eea;
+}
+
+.turno-status {
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.status-pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-completed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.turno-details {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.turno-details h2 {
+  margin: 0 0 20px 0;
+  color: #333;
+}
+
+.detail-section {
+  margin-bottom: 25px;
+}
+
+.detail-section h3 {
+  color: #667eea;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #666;
+}
+
+.detail-value {
+  color: #333;
+}
+
+.status-value {
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.turno-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.complete-btn {
+  background: #28a745;
+  color: white;
+}
+
+.complete-btn:hover {
+  background: #218838;
+}
+
+.cancel-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: #c82333;
+}
+
+.pending-btn {
+  background: #ffc107;
+  color: #212529;
+}
+
+.pending-btn:hover {
+  background: #e0a800;
+}
+
+.action-btn.active {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.scanner-container {
+  padding: 40px;
+  text-align: center;
+}
+
+.manual-scanner h2 {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.scanner-wrapper {
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.manual-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.manual-input-container label {
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+}
+
+.manual-code-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.manual-code-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.verify-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.verify-btn:hover {
+  background: #5a6fd8;
+}
+
+.cancel-scan-btn {
+  padding: 10px 20px;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-scan-btn:hover {
+  background: #5a6268;
+}
+
+.scan-result {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.scan-error,
+.scan-success,
+.start-scan {
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.scan-error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.scan-success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.start-scan {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.error-icon,
+.success-icon,
+.scan-icon {
+  font-size: 4rem !important;
+  margin-bottom: 20px;
+}
+
+.error-icon {
+  color: #dc3545;
+}
+
+.success-icon {
+  color: #28a745;
+}
+
+.scan-icon {
+  color: #667eea;
+}
+
+.scanned-turno {
+  margin: 20px 0;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.turno-not-found {
+  margin: 20px 0;
+  padding: 20px;
+  background: #fff3cd;
+  border-radius: 8px;
+  color: #856404;
+}
+
+.warning-icon {
+  font-size: 3rem !important;
+  color: #ffc107;
+  margin-bottom: 15px;
+}
+
+.retry-btn,
+.scan-again-btn,
+.start-scan-btn {
+  padding: 12px 24px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.retry-btn:hover,
+.scan-again-btn:hover,
+.start-scan-btn:hover {
+  background: #5a6fd8;
+}
+
+@media (max-width: 768px) {
+  .admin-turnos-content {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .turnos-list-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .turnos-list {
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .turnos-list-header,
+  .turno-item {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .turno-actions {
+    justify-content: center;
+  }
+
+  .admin-tabs {
+    flex-direction: column;
+  }
+}

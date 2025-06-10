@@ -1,0 +1,135 @@
+.booking-form-container {
+  background: var(--lightest-color);
+  border-radius: 10px;
+  padding: 25px;
+  margin-top: 20px;
+}
+
+.form-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-group input,
+.form-group select {
+  padding: 12px 15px;
+  border: 1px solid var(--light-color);
+  border-radius: 8px;
+  font-size: 15px;
+  color: var(--text-primary);
+  transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--secondary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(166, 177, 225, 0.2);
+}
+
+.form-group input.error {
+  border-color: #e53935;
+}
+
+.error-message {
+  color: #e53935;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.booking-summary {
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--light-color);
+}
+
+.booking-summary h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.summary-item:last-child {
+  margin-bottom: 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--light-color);
+  font-weight: 600;
+}
+
+.price {
+  color: var(--secondary-color);
+  font-weight: 700;
+}
+
+.price::before {
+  content: "$";
+  font-size: 20px;
+  vertical-align: top;
+  margin-right: 2px;
+}
+
+.submit-button {
+  margin-top: 25px;
+  padding: 15px;
+  background: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.submit-button:hover {
+  background: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(66, 72, 116, 0.3);
+}
+
+@media (max-width: 768px) {
+  .booking-form-container {
+    padding: 20px 15px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .submit-button {
+    padding: 12px;
+    font-size: 15px;
+  }
+}

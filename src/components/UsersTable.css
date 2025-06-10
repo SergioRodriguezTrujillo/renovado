@@ -1,0 +1,89 @@
+.users-table-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  border-bottom: 2px solid #f8f9fa;
+}
+
+.table-header h3 {
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+}
+
+.table-content {
+  overflow-x: auto;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+  padding: 18px 25px;
+  text-align: left;
+  border-bottom: 1px solid #f8f9fa;
+}
+
+.users-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #666;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.users-table td {
+  font-size: 14px;
+  color: #333;
+}
+
+.users-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.role-badge {
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.role-badge.administración {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.role-badge.colaborador {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+@media (max-width: 768px) {
+  .table-header {
+    padding: 20px;
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 15px 20px;
+    font-size: 13px;
+  }
+
+  .table-header h3 {
+    font-size: 16px;
+  }
+}
