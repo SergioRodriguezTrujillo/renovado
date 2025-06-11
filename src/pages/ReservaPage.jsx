@@ -32,6 +32,53 @@ function ReservaPage() {
   const [availableTimes, setAvailableTimes] = useState([])
   const [step, setStep] = useState(1)
   const [error, setError] = useState("")
+  const [selectedHaircut, setSelectedHaircut] = useState(location.state?.selectedImage || null)
+  const [showGalleryModal, setShowGalleryModal] = useState(false)
+
+  // Gallery images data
+  const galleryImages = [
+    // Niños
+    { id: 1, name: "Corte Básico", price: "100.00", image: "./images/niños/004.jpg", category: "Niños" },
+    { id: 2, name: "Cresta", price: "100.00", image: "./images/niños/007.jpg", category: "Niños" },
+    { id: 3, name: "Con Diseño", price: "120.00", image: "./images/niños/014.jpg", category: "Niños" },
+    { id: 4, name: "Degradado Medio", price: "100.00", image: "./images/niños/016.jpg", category: "Niños" },
+    { id: 5, name: "Pelo Largo", price: "100.00", image: "./images/niños/020.jpg", category: "Niños" },
+    { id: 6, name: "Corte Pompadour", price: "100.00", image: "./images/niños/021.jpg", category: "Niños" },
+    { id: 7, name: "Degradado Alto", price: "100.00", image: "./images/niños/027.jpg", category: "Niños" },
+    { id: 8, name: "Raspado Diseño", price: "100.00", image: "./images/niños/030.jpg", category: "Niños" },
+
+    // Clásicos
+    { id: 9, name: "Clásico Moderno", price: "150.00", image: "./images/clasicos/200.jpg", category: "Clásicos" },
+    { id: 10, name: "Clásico con Barba", price: "150.00", image: "./images/clasicos/201.jpg", category: "Clásicos" },
+    { id: 11, name: "Corte Formal", price: "150.00", image: "./images/clasicos/202.jpg", category: "Clásicos" },
+    { id: 12, name: "Corte Pompadour", price: "150.00", image: "./images/clasicos/203.jpg", category: "Clásicos" },
+    { id: 13, name: "Corte Elegante", price: "150.00", image: "./images/clasicos/204.jpg", category: "Clásicos" },
+
+    // Degradados
+    { id: 14, name: "Mohicano", price: "150.00", image: "./images/degradados/000.jpg", category: "Degradados" },
+    { id: 15, name: "Moño con Diseño", price: "180.00", image: "./images/degradados/017.jpg", category: "Degradados" },
+    { id: 16, name: "Texturizado", price: "150.00", image: "./images/degradados/018.jpg", category: "Degradados" },
+    { id: 17, name: "Fade con Diseño", price: "200.00", image: "./images/degradados/024.jpg", category: "Degradados" },
+    { id: 18, name: "Pelo Largo", price: "150.00", image: "./images/degradados/031.jpg", category: "Degradados" },
+
+    // Afro
+    { id: 19, name: "Afro Mohicano", price: "200.00", image: "./images/afro/051.jpg", category: "Afro" },
+    { id: 20, name: "Afro Rizo", price: "150.00", image: "./images/afro/156.jpg", category: "Afro" },
+    { id: 21, name: "Rizo Corto", price: "150.00", image: "./images/afro/157.jpg", category: "Afro" },
+    { id: 22, name: "Afro Cuadrado", price: "150.00", image: "./images/afro/158.jpg", category: "Afro" },
+
+    // Diseños
+    { id: 23, name: "3 Rayas", price: "100.00", image: "./images/diseño/001.jpg", category: "Diseños" },
+    { id: 24, name: "Cola Z", price: "50.00", image: "./images/diseño/003.jpg", category: "Diseños" },
+    { id: 25, name: "Estrellas", price: "150.00", image: "./images/diseño/005.jpg", category: "Diseños" },
+    { id: 26, name: "Diseño Artístico", price: "150.00", image: "./images/diseño/006.jpg", category: "Diseños" },
+
+    // Barba
+    { id: 27, name: "Degradada Corta", price: "50.00", image: "./images/barba/002.jpg", category: "Barba" },
+    { id: 28, name: "Degradada Larga", price: "50.00", image: "./images/barba/010.jpg", category: "Barba" },
+    { id: 29, name: "Degradada Media", price: "50.00", image: "./images/barba/012.jpg", category: "Barba" },
+    { id: 30, name: "Corte Recto", price: "50.00", image: "./images/barba/022.jpg", category: "Barba" },
+  ]
 
   useEffect(() => {
     // Generar días de la semana
@@ -115,6 +162,42 @@ function ReservaPage() {
     return date.toLocaleDateString("es-ES", { month: "long" })
   }
 
+  const handleSelectHaircut = (haircut) => {
+    setSelectedHaircut(haircut)
+    setShowGalleryModal(false)
+  }
+
+  // Function to convert image to base64 for PDF
+  const getImageAsBase64 = (imageSrc) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image()
+      img.crossOrigin = "anonymous"
+      img.onload = () => {
+        const canvas = document.createElement("canvas")
+        const ctx = canvas.getContext("2d")
+        canvas.width = img.width
+        canvas.height = img.height
+        ctx.drawImage(img, 0, 0)
+        const dataURL = canvas.toDataURL("image/jpeg", 0.8)
+        resolve(dataURL)
+      }
+      img.onerror = () => {
+        // If image fails to load, return a default man icon
+        resolve(getDefaultManIcon())
+      }
+      img.src = imageSrc
+    })
+  }
+
+  // Default man icon as base64
+  const getDefaultManIcon = () => {
+    // Simple man icon SVG converted to base64
+    const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="#666">
+      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+    </svg>`
+    return `data:image/svg+xml;base64,${btoa(svgIcon)}`
+  }
+
   const generatePDF = async () => {
     const doc = new jsPDF()
     const turnoNumber = Math.floor(Math.random() * 1000)
@@ -127,10 +210,23 @@ function ReservaPage() {
       hora: selectedTime,
       cliente: formData.nombre,
       dni: formData.dni,
+      estilo: selectedHaircut ? selectedHaircut.name : "No especificado",
     })
 
     // Generar QR
     const qrCodeDataURL = await QRCode.toDataURL(qrData)
+
+    // Get haircut image or default icon
+    let haircutImageBase64
+    if (selectedHaircut && selectedHaircut.image) {
+      try {
+        haircutImageBase64 = await getImageAsBase64(selectedHaircut.image)
+      } catch (error) {
+        haircutImageBase64 = getDefaultManIcon()
+      }
+    } else {
+      haircutImageBase64 = getDefaultManIcon()
+    }
 
     // Configurar PDF
     doc.setFillColor(26, 188, 196)
@@ -149,26 +245,39 @@ function ReservaPage() {
     doc.text(`Fecha: ${formatDate(selectedDate)}`, 20, 70)
     doc.text(`Horario: ${selectedTime}`, 20, 80)
 
-    doc.setFontSize(14)
-    doc.text("Datos del Cliente", 20, 100)
-    doc.setFontSize(12)
-    doc.text(`Nombre: ${formData.nombre}`, 20, 110)
-    doc.text(`DNI: ${formData.dni}`, 20, 120)
-    doc.text(`Teléfono: ${formData.telefono}`, 20, 130)
-    doc.text(`Email: ${formData.email}`, 20, 140)
+    // Add haircut style info
+    if (selectedHaircut) {
+      doc.text(`Estilo: ${selectedHaircut.name}`, 20, 90)
+      doc.text(`Precio estilo: $${selectedHaircut.price}`, 20, 100)
+    } else {
+      doc.text("Estilo: No especificado", 20, 90)
+    }
 
     doc.setFontSize(14)
-    doc.text("Detalles del Pago", 20, 160)
+    doc.text("Datos del Cliente", 20, 120)
     doc.setFontSize(12)
-    doc.text(`Método de Pago: ${formData.metodoPago}`, 20, 170)
-    doc.text(`Monto: $${service.price}`, 20, 180)
+    doc.text(`Nombre: ${formData.nombre}`, 20, 130)
+    doc.text(`DNI: ${formData.dni}`, 20, 140)
+    doc.text(`Teléfono: ${formData.telefono}`, 20, 150)
+    doc.text(`Email: ${formData.email}`, 20, 160)
+
+    doc.setFontSize(14)
+    doc.text("Detalles del Pago", 20, 180)
+    doc.setFontSize(12)
+    doc.text(`Método de Pago: ${formData.metodoPago}`, 20, 190)
+    doc.text(`Monto: $${service.price}`, 20, 200)
+
+    // Add haircut image
+    doc.addImage(haircutImageBase64, "JPEG", 130, 30, 60, 60)
+    doc.setFontSize(10)
+    doc.text("Estilo seleccionado", 160, 100, { align: "center" })
 
     // Agregar QR
-    doc.addImage(qrCodeDataURL, "PNG", 130, 100, 60, 60)
+    doc.addImage(qrCodeDataURL, "PNG", 130, 120, 60, 60)
 
     doc.setFontSize(10)
-    doc.text("Gracias por confiar en nosotros.", 105, 210, { align: "center" })
-    doc.text("Para cualquier consulta, contáctanos al 123-456-789.", 105, 220, { align: "center" })
+    doc.text("Gracias por confiar en nosotros.", 105, 220, { align: "center" })
+    doc.text("Para cualquier consulta, contáctanos al 123-456-789.", 105, 230, { align: "center" })
 
     // Guardar PDF
     doc.save(`Reserva_${turnoNumber}.pdf`)
@@ -303,12 +412,20 @@ function ReservaPage() {
 
             <div className="reserva-summary">
               <div className="summary-service">
-                <img src={service.image || "/placeholder.svg"} alt={service.name} className="summary-image" />
+                <img
+                  src={selectedHaircut ? selectedHaircut.image : service.image || "/placeholder.svg"}
+                  alt={selectedHaircut ? selectedHaircut.name : service.name}
+                  className="summary-image"
+                />
                 <div className="summary-details">
                   <h3>{service.name}</h3>
                   <p className="summary-category">{service.category}</p>
                   <p className="summary-price">$ {service.price}</p>
+                  {selectedHaircut && <p className="selected-style">Estilo: {selectedHaircut.name}</p>}
                 </div>
+                <button className="select-style-btn" onClick={() => setShowGalleryModal(true)}>
+                  {selectedHaircut ? "Cambiar Estilo" : "Seleccionar Estilo"}
+                </button>
               </div>
 
               <div className="summary-info">
@@ -370,6 +487,32 @@ function ReservaPage() {
 
         <div className="reserva-content">{renderStepContent()}</div>
       </div>
+
+      {/* Gallery Modal */}
+      {showGalleryModal && (
+        <div className="gallery-modal-overlay" onClick={() => setShowGalleryModal(false)}>
+          <div className="gallery-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="gallery-modal-header">
+              <h3>Selecciona un estilo</h3>
+              <button className="gallery-modal-close" onClick={() => setShowGalleryModal(false)}>
+                ×
+              </button>
+            </div>
+            <div className="gallery-modal-content">
+              {galleryImages.map((haircut) => (
+                <div key={haircut.id} className="gallery-item" onClick={() => handleSelectHaircut(haircut)}>
+                  <img src={haircut.image || "/placeholder.svg"} alt={haircut.name} />
+                  <div className="gallery-item-info">
+                    <h4>{haircut.name}</h4>
+                    <p>${haircut.price}</p>
+                    <span className="gallery-item-category">{haircut.category}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>

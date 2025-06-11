@@ -1,320 +1,257 @@
-/* Importar estilos base de Home.css */
-@import url("./Home.css");
-
 .gallery-page {
-  font-family: var(--text-font);
-  line-height: 1.6;
-  color: var(--text-color);
-  background-color: var(--white);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Estilos para la página de galería */
 .gallery-header {
+  padding: 60px 0 40px;
   text-align: center;
-  padding: 60px 0;
-  background: linear-gradient(135deg, var(--lightest-color) 0%, rgba(220, 214, 247, 0.3) 100%);
 }
 
 .page-title {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  margin-bottom: 20px;
+  font-size: 36px;
   font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.bible-verse {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--secondary-color);
+  margin-bottom: 20px;
 }
 
 .gallery-intro {
-  font-size: 1.2rem;
   max-width: 800px;
   margin: 0 auto;
-  color: var(--text-color);
-  line-height: 1.7;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
 }
 
-/* Versículos bíblicos */
-.section-verse {
-  text-align: center;
-  font-style: italic;
-  color: var(--verse-color);
-  margin: -15px 0 35px;
-  font-size: 1.2rem;
-  font-family: var(--verse-font);
-  font-weight: 500;
-  position: relative;
-  padding: 0 30px;
-}
-
-.section-verse::before,
-.section-verse::after {
-  content: "✦";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--accent-color);
-  font-size: 1.3rem;
-}
-
-.section-verse::before {
-  left: 0;
-}
-
-.section-verse::after {
-  right: 0;
-}
-
-/* Secciones de galería */
 .gallery-section {
-  scroll-margin-top: 80px;
-  padding: 80px 0;
-}
-
-.gallery-section:nth-child(even) {
-  background-color: var(--white);
-}
-
-.gallery-section:nth-child(odd) {
-  background: linear-gradient(135deg, var(--lightest-color) 0%, rgba(220, 214, 247, 0.3) 100%);
+  padding: 60px 0;
 }
 
 .gallery-section h2 {
-  text-align: center;
-  font-size: 2.5rem !important;
-  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 600;
   color: var(--primary-color);
-  position: relative;
-  padding-bottom: 20px;
-  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.gallery-section h2::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 5px;
-  background: var(--gradient-green);
-  border-radius: 3px;
-  box-shadow: 0 2px 10px rgba(124, 131, 253, 0.3);
+.section-verse {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-  margin-top: 50px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .gallery-item {
   position: relative;
-  aspect-ratio: 1 / 1;
+  border-radius: 8px;
   overflow: hidden;
-  border-radius: var(--border-radius);
-  box-shadow: 0 10px 30px rgba(124, 131, 253, 0.15);
-  transition: all 0.4s ease;
+  box-shadow: var(--shadow);
   cursor: pointer;
-  background-color: var(--white);
-  border: 2px solid transparent;
-}
-
-.gallery-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--gradient-primary);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1;
-}
-
-.gallery-item:hover::before {
-  opacity: 0.1;
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 300px;
 }
 
 .gallery-item:hover {
-  transform: translateY(-15px) scale(1.02);
-  box-shadow: 0 25px 50px rgba(124, 131, 253, 0.25);
-  border-color: var(--accent-color);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--border-radius);
-  transition: transform 0.4s ease;
+  transition: transform 0.5s;
 }
 
 .gallery-item:hover img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-/* Información de la imagen (nombre y precio) */
 .image-info {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%; 
-  background: linear-gradient(to top, #000000, #4ecdc500);
+  right: 0;
+  padding: 15px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
   color: white;
-  padding: 20px 15px 15px;
-  transition: all 0.3s ease;
-  z-index: 2;
+  transition: opacity 0.3s;
 }
 
 .image-info h3 {
-  font-size: 1.1rem;
+  font-size: 18px;
   font-weight: 600;
   margin-bottom: 5px;
 }
 
 .image-info p {
-  font-size: 1.3rem;
+  font-size: 16px;
   font-weight: 700;
-  background: var(--info-color);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--lightest-color);
 }
 
-/* Modal para ver imágenes ampliadas */
+.section-white {
+  background-color: var(--white);
+}
+
+.section-light {
+  background-color: var(--lightest-color);
+}
+
+/* Modal styles */
 .modal {
-  display: flex;
+  display: none;
   position: fixed;
-  z-index: 300;
-  padding: 20px;
+  z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  backdrop-filter: blur(10px);
-  align-items: center;
-  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content-wrapper {
+  display: flex;
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-image-container {
+  flex: 1;
+  max-height: 80vh;
 }
 
 .modal-content {
-  margin: auto;
-  display: block;
-  width: calc(100% - 40px);
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: var(--border-radius);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-  animation: zoom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-@keyframes zoom {
-  from {
-    transform: scale(0.7) rotate(-5deg);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
+.modal-info {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
-.modal-caption,
-.modal-price {
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: left;
+.modal-title {
+  font-size: 32px;
+  font-weight: 700;
   color: var(--primary-color);
-  padding: 15px 0;
-  font-size: 1.5rem;
-}
-
-.modal-caption {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-top: 25px;
+  margin-bottom: 10px;
 }
 
 .modal-price {
-  font-size: 1.8rem;
+  font-size: 28px;
   font-weight: 700;
-  background: var(--gradient-green);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #1abcc4;
+  margin-bottom: 20px;
+}
+
+.modal-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.modal-reserve-btn {
+  background-color: #1abcc4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 25px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.modal-reserve-btn:hover {
+  background-color: #00acc1;
 }
 
 .modal-close {
   position: absolute;
-  top: 20px;
-  right: 30px;
+  top: 15px;
+  right: 15px;
   color: white;
-  font-size: 45px;
+  font-size: 30px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
-  background: rgba(66, 72, 116, 0.7);
-  height: 50px;
-  width: 50px;
+  z-index: 1001;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
+  justify-content: center;
 }
 
-.modal-close:hover {
-  background: var(--gradient-primary);
-  transform: rotate(90deg) scale(1.1);
-}
+/* Mobile styles */
+@media (max-width: 450px) {
+  .modal-content-wrapper {
+    flex-direction: column;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
 
-/* Media queries para responsive */
-@media (min-width: 768px) {
+  .modal-image-container {
+    max-height: 50vh;
+  }
+
+  .modal-info {
+    padding: 20px;
+  }
+
+  .modal-title {
+    font-size: 24px;
+  }
+
+  .modal-price {
+    font-size: 22px;
+  }
+
   .gallery {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 
-  .image-info {
-    padding: 25px 20px 20px;
+  .gallery-item {
+    height: 200px;
   }
-
-  .image-info h3 {
-    font-size: 1.3rem;
-  }
-
-  .page-title {
-    font-size: 2.5rem;
-  }
-}
-
-@media (min-width: 992px) {
-  .gallery {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* Animaciones adicionales */
-.gallery-section {
-  animation: fadeIn 1.2s ease-in-out;
-}
-
-.gallery-item {
-  animation: fadeIn 0.8s ease-in-out;
-}
-
-.gallery-item:nth-child(2n) {
-  animation-delay: 0.1s;
-}
-
-.gallery-item:nth-child(3n) {
-  animation-delay: 0.2s;
-}
-
-.gallery-item:nth-child(4n) {
-  animation-delay: 0.3s;
 }

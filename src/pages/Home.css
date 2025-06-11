@@ -277,7 +277,7 @@ img {
   position: relative;
   height: 300px;
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
 }
 
 .about-image::before {
@@ -362,7 +362,7 @@ img {
   position: relative;
   height: 300px;
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
 }
 
 .barber-image::before {
@@ -757,7 +757,7 @@ img {
   .about-text,
   .barber-image,
   .barber-text {
-    height: 620px;
+    height: 520px;
   }
 
   .location-info,
